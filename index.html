@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Wide Phillips</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <img src="https://www.philmontscoutranch.org/wp-content/uploads/filestore/photos/museums/PhillipsFamily/WaitePhillips.jpg?w=200&h=300&as=1" id="waite">
+    <h1 id="wide">Wide Phillips</h1>
+  </body>
+</html>
+<style>
+    #waite
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    #wide
+    {
+      position: absolute;
+      left: 50vw;
+      top: 80vh;
+      transform: translate(-50%);
+      font-size: 75px;
+      color: red;
+      display: none;
+    }
+</style>
+<script>
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function demo() {
+      await sleep(5000);
+      document.getElementById('wide').style.display = 'inline';
+  }
+
+  demo();
+</script>
