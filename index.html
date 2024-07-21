@@ -9,7 +9,9 @@
   </head>
   <body>
     <img src="https://www.philmontscoutranch.org/wp-content/uploads/filestore/photos/museums/PhillipsFamily/WaitePhillips.jpg?w=200&h=300&as=1" id="waite">
-    <h1 id="wide">Wide Phillips</h1>
+    <div id="info">
+      hello, world!
+    </div>
   </body>
 </html>
 <style>
@@ -22,26 +24,39 @@
         width: 100vw;
     }
 
-    #wide
+    #info
     {
       position: absolute;
-      left: 50vw;
-      top: 80vh;
-      transform: translate(-50%);
-      font-size: 75px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 30px;
       color: red;
-      display: none;
+      width: 100%;
+      text-align: center;
     }
 </style>
 <script>
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+    function httpGet(theUrl)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+        xmlHttp.send( null );
+        return xmlHttp.responseText;
+    }
+    // {"status":"success","country":"United States","countryCode":"US","region":"NM","regionName":"New Mexico","city":"Raton","zip":"87740","lat":36.8986,"lon":-104.433,"timezone":"America/Denver","isp":"Sierra Communications","org":"Plateau Telecommunications Incorporated","as":"AS20356 SIERRA COMMUNICATIONS, INC.","query":"68.66.86.94"}
+    let ip = httpGet('https://ipv4.icanhazip.com/');
+    let res = JSON.parse(httpGet('http://ip-api.com/json/' + ip));
+    let resHTML = ""
+    console.log(res);
+    resHTML = resHTML + "IP: " + res.query + "<br>";
+    resHTML = resHTML + "Country: " + res.country + "<br>";
+    resHTML = resHTML + "Region: " + res.region + "<br>";
+    resHTML = resHTML + "City: " + res.city + "<br>";
+    resHTML = resHTML + "ZIP: " + res.zip + "<br>";
+    resHTML = resHTML + "Coords: " + res.lat + ", " + res.lon + "<br>";
+    resHTML = resHTML + "ISP: " + res.isp + "<br>";
+    resHTML = resHTML + "Org: " + res.org + "<br>";
+    document.getElementById('info').innerHTML = resHTML;
 
-  async function demo() {
-      await sleep(5000);
-      document.getElementById('wide').style.display = 'inline';
-  }
-
-  demo();
 </script>
