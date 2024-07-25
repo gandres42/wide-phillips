@@ -10,7 +10,7 @@
   <body>
     <img src="https://www.philmontscoutranch.org/wp-content/uploads/filestore/photos/museums/PhillipsFamily/WaitePhillips.jpg?w=200&h=300&as=1" id="waite">
     <div id="info">
-      hello, world!
+      Wide Phillips
     </div>
   </body>
 </html>
@@ -45,17 +45,15 @@
         return xmlHttp.responseText;
     }
     // {"status":"success","country":"United States","countryCode":"US","region":"NM","regionName":"New Mexico","city":"Raton","zip":"87740","lat":36.8986,"lon":-104.433,"timezone":"America/Denver","isp":"Sierra Communications","org":"Plateau Telecommunications Incorporated","as":"AS20356 SIERRA COMMUNICATIONS, INC.","query":"68.66.86.94"}
-    let ip = httpGet('http://ipv4.icanhazip.com/');
-    let res = JSON.parse(httpGet('http://ip-api.com/json/' + ip));
+    let ip = httpGet('https://ipv4.icanhazip.com/');
+    let res = JSON.parse(httpGet('https://ipinfo.io/' + ip + '/json'));
     let resHTML = ""
     console.log(res);
-    resHTML = resHTML + "IP: " + res.query + "<br>";
+    resHTML = resHTML + "IP: " + res.ip + "<br>";
     resHTML = resHTML + "Country: " + res.country + "<br>";
     resHTML = resHTML + "Region: " + res.region + "<br>";
     resHTML = resHTML + "City: " + res.city + "<br>";
-    resHTML = resHTML + "ZIP: " + res.zip + "<br>";
-    resHTML = resHTML + "Coords: " + res.lat + ", " + res.lon + "<br>";
-    resHTML = resHTML + "ISP: " + res.isp + "<br>";
+    resHTML = resHTML + "ZIP: " + res.postal + "<br>";
     resHTML = resHTML + "Org: " + res.org + "<br>";
     document.getElementById('info').innerHTML = resHTML;
 
