@@ -45,7 +45,7 @@
         return xmlHttp.responseText;
     }
     // {"status":"success","country":"United States","countryCode":"US","region":"NM","regionName":"New Mexico","city":"Raton","zip":"87740","lat":36.8986,"lon":-104.433,"timezone":"America/Denver","isp":"Sierra Communications","org":"Plateau Telecommunications Incorporated","as":"AS20356 SIERRA COMMUNICATIONS, INC.","query":"68.66.86.94"}
-    let ip = httpGet('https://ipv4.icanhazip.com/');
+    let ip = httpGet('http://ipv4.icanhazip.com/');
     let res = JSON.parse(httpGet('http://ip-api.com/json/' + ip));
     let resHTML = ""
     console.log(res);
